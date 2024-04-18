@@ -1,8 +1,6 @@
 
 # 📊 Hospitality Data Analysis Project
 
-![Hospitality Data Analysis](images/hospitality_data_analysis.jpg)
-
 ## Overview
 Welcome to the Hospitality Data Analysis Project! This repository contains code snippets and calculations for a comprehensive analysis of hospitality data. Our project focuses on exploring various metrics and insights crucial for understanding revenue, occupancy, booking behavior, and performance trends in the hospitality industry.
 
