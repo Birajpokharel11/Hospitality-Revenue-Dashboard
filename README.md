@@ -1,5 +1,5 @@
-
 # 📊 Hospitality Data Analysis Project
+
 
 ## Overview
 Welcome to the Hospitality Data Analysis Project! This repository contains code snippets and calculations for a comprehensive analysis of hospitality data. Our project focuses on exploring various metrics and insights crucial for understanding revenue, occupancy, booking behavior, and performance trends in the hospitality industry.
@@ -44,7 +44,70 @@ Welcome to the Hospitality Data Analysis Project! This repository contains code 
 - revenue_realized: Final amount of money that goes to the hotel based on booking status.
 
 ## Key Metrics and Calculations
-Explore various key metrics and calculations included in our analysis, such as total revenue realized, occupancy percentage, average daily rate (ADR), and more.
 
+### Total Revenue Realized
+- Formula: SUM(fact_bookings[revenue_realized])
 
+### Total Number of Bookings
+- Formula: COUNT(fact_bookings[booking_id])
+
+### Total Capacity of Rooms
+- Formula: SUM(fact_aggregated_bookings[capacity])
+
+### Total Successful Bookings
+- Formula: SUM(fact_aggregated_bookings[successful_bookings])
+
+### Occupancy Percentage
+- Formula: DIVIDE([Total Successful Bookings],[Total Capacity],0)
+
+### Average Ratings Given by Customers
+- Formula: AVERAGE(fact_bookings[ratings_given])
+
+### Number of Days in Data
+- Formula: DATEDIFF(MIN(dim_date[date]),MAX(dim_date[date]),DAY) +1
+
+### Total Cancelled Bookings
+- Formula: CALCULATE([Total Bookings],fact_bookings[booking_status]="Cancelled")
+
+### Cancellation Percentage
+- Formula: DIVIDE([Total cancelled bookings],[Total Bookings])
+
+### Total Checked Out Bookings
+- Formula: CALCULATE([Total Bookings],fact_bookings[booking_status]="Checked Out")
+
+### Total No Show Bookings
+- Formula: CALCULATE([Total Bookings],fact_bookings[booking_status]="No Show")
+
+### No Show Rate Percentage
+- Formula: DIVIDE([Total no show bookings],[Total Bookings])
+
+### Booking Percentage by Platform
+- Formula: DIVIDE([Total Bookings], CALCULATE([Total Bookings], ALL(fact_bookings[booking_platform])))*100
+
+### Booking Percentage by Room Class
+- Formula: DIVIDE([Total Bookings], CALCULATE([Total Bookings], ALL(dim_rooms[room_class])))*100
+
+### ADR (Average Daily Rate)
+- Formula: DIVIDE( [Revenue], [Total Bookings],0)
+
+### Realization Percentage
+- Formula: 1- ([Cancellation %]+[No Show rate %])
+
+### RevPAR (Revenue Per Available Room)
+- Formula: DIVIDE([Revenue],[Total Capacity])
+
+### DBRN (Daily Booked Room Nights)
+- Formula: DIVIDE([Total Bookings], [No of days])
+
+### DSRN (Daily Sellable Room Nights)
+- Formula: DIVIDE([Total Capacity], [No of days])
+
+### DURN (Daily Utilized Room Nights)
+- Formula: DIVIDE([Total Checked Out],[No of days])
+
+### Week-over-Week Changes
+- Formula: See individual formulas for Revenue, Occupancy, ADR, RevPAR, Realization, and DSRN.
+
+## Usage
+Each calculation and analysis is provided as a separate code snippet. You can utilize this code within your preferred data analysis environment such as Microsoft Power BI, SQL Server Management Studio, or any other analytics tool of your choice.
 
